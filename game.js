@@ -8,6 +8,18 @@ var hadouken = 50;
 var hits = 0;
 
 
+var Objects = function(name, item, description) {
+    this.name = name;
+    this.item = item;
+    this.description = discription;
+}
+
+var items = {
+    shield:new Item("Shield",0.3,"This is an awesome shield!"),
+    sword:new Item("Sword",0.5,"Fantastic sword!"), 
+    hammer:new Item("Hammer",0.25,"Great hammer!")
+}
+
 
 function onSlap() {
     if (health > 0) {
