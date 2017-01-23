@@ -39,34 +39,42 @@ drawUpdateHealth();
 
 
 function onSlap() {
-    p1.health = p1.health - 1;
-    p1.hits++;
-    gameController();
+    if (p1.health > 0) {
+        p1.health = p1.health - 1;
+        p1.hits++;
+        gameController();
+    }
 };
 
 
 
 function onPunch() {
-    p1.health = p1.health - 10;
-    p1.hits++;
-    gameController();
+    if (p1.health > 0) {
+        p1.health = p1.health - 10;
+        p1.hits++;
+        gameController();
+    }
 }
 
 
 
 function onKick() {
-    p1.health = p1.health - 25;
-    p1.hits++;
-    gameController();
+    if (p1.health > 0) {
+        p1.health = p1.health - 25;
+        p1.hits++;
+        gameController();
+    }
 
 }
 
 
 
 function onHadouken() {
-    p1.health = p1.health - 50;
-    p1.hits++;
-    gameController();
+    if (p1.health > 0) {
+        p1.health = p1.health - 50;
+        p1.hits++;
+        gameController();
+    }
 
 }
 
@@ -78,12 +86,7 @@ function onReset() {
     drawUpdateHealth();
 }
 
-function gameController() {
-    drawUpdateHealth();
-    zeroScreen();
-    gameOver();
 
-}
 function zeroScreen() {
     if (p1.health < 0) {
         document.getElementById("health").innerHTML = 0;
@@ -103,4 +106,11 @@ function drawUpdateHealth() {
     console.log('update ' + p1.health);
     document.getElementById("health").innerHTML = p1.health;
     document.getElementById("hits").innerHTML = p1.hits;
+}
+
+function gameController() {
+    drawUpdateHealth();
+    zeroScreen();
+    gameOver();
+
 }
