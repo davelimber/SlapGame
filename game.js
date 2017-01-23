@@ -1,84 +1,106 @@
 
 // Global vars
-var health = 100;
-var slap = 1;
-var punch = 10;
-var kick = 20;
-var hadouken = 50;
-var hits = 0;
+// var health = 100;
+// var slap = 1;
+// var punch = 10;
+// var kick = 20;
+// var hadouken = 50;
+// var hits = 0;
+// var player1 = '';
+// var player2 = '';
 
 
-var Objects = function(name, item, description) {
-    this.name = name;
-    this.item = item;
-    this.description = discription;
+
+var Target = function (health) {
+    this.health = health;
+    this.slap = 1;
+    this.punch = 10
+    this.kick = 20;
+    this.hadouken = 50;
+    this.hits = 0;
+
 }
 
-var items = {
-    shield:new Item("Shield",0.3,"This is an awesome shield!"),
-    sword:new Item("Sword",0.5,"Fantastic sword!"), 
-    hammer:new Item("Hammer",0.25,"Great hammer!")
-}
+var p1 = new Target(100);
+drawUpdateHealth();
+
+
+// var Objects = function (name, item, description) {
+//     this.name = name;
+//     this.item = item;
+//     this.description = description;
+// }
+
+// var items = {
+//     shield: new Item("Shield", 0.3, "This is an awesome shield!"),
+//     sword: new Item("Sword", 0.5, "Fantastic sword!"),
+//     hammer: new Item("Hammer", 0.25, "Great hammer!")
+// }
 
 
 function onSlap() {
-    if (health > 0) {
-        health = health - slap;
-        if (health == 0 || health < 0) {
-            gameOver();
-        } drawUpdateHealth();
-    } else {
-        gameOver();
-    }
-}
+    p1.health = p1.health - 1;
+    p1.hits++;
+    gameController();
+};
 
 
 
 function onPunch() {
-    if (health > 0) {
-        health = health - punch;
-        drawUpdateHealth();
-    } else {
-        gameOver();
-    }
+    p1.health = p1.health - 10;
+    p1.hits++;
+    gameController();
 }
 
 
 
 function onKick() {
-    // console.log(health);
-    if (health > 0) {
-        health = health - kick;
-        drawUpdateHealth();
-    } else {
-        gameOver();
-    }
+    p1.health = p1.health - 25;
+    p1.hits++;
+    gameController();
+
 }
 
 
 
 function onHadouken() {
-    if (health > 0) {
-        health = health - hadouken;
-        drawUpdateHealth();
-    } else {
-        gameOver();
-    }
+    p1.health = p1.health - 50;
+    p1.hits++;
+    gameController();
+
 }
 
 function onReset() {
-    health = 100;
-    hits = 0;
+    p1.health = 100;
+    p1.hits = 0;
+    console.log('reset ' + p1.health);
+    document.getElementById("health1").innerHTML = '';
     drawUpdateHealth();
 }
 
+function gameController() {
+    drawUpdateHealth();
+    zeroScreen();
+    gameOver();
+
+}
+function zeroScreen() {
+    if (p1.health < 0) {
+        document.getElementById("health").innerHTML = 0;
+    }
+
+}
+
 function gameOver() {
-    document.getElementById("health1").innerHTML = 'Game Over!';
-    document.getElementById("health").innerHTML = 'Good Job!!';
+    console.log(p1.health);
+    if (p1.health <= 0) {
+        document.getElementById("health1").innerHTML = 'Game Over!';
+        document.getElementById("health").innerHTML = 'Good Job!!';
+    }
 }
 
 function drawUpdateHealth() {
-    hits++;
-    document.getElementById("health").innerHTML = health;
-    document.getElementById("hits").innerHTML = hits;
+    console.log('update ' + p1.health);
+    document.getElementById("health").innerHTML = p1.health;
+    document.getElementById("hits").innerHTML = p1.hits;
 }
