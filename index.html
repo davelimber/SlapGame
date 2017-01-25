@@ -1,4 +1,6 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
 	<title>Slap Object Game</title>
 	<link rel="stylesheet" href="game.css">
@@ -9,11 +11,15 @@
 	<div class="stage">
   <div class="player">
     <!--<button id="hits>Hits</button>-->
+    <button onclick="onShield()">Shield</button>
+     <button onclick="onHelmet()">Helmet</button>
+      <button onclick="onArmor()">Armor</button>
     <button onclick="onSlap()">Slap</button>
     <button onclick="onPunch()">Punch</button>
     <button onclick="onKick()">Kick</button>
     <button onclick="onHadouken()"><img src="asset/img/hudouku.gif" height="80" /></button>
-	<button onclick="onReset()">Reset</button>
+  <button onclick="onReset()">Reset</button>
+  <!--<button onclick="onShield()">Add Shield</button>-->
   </div>
 </div>
 <div><h1 id="health1"></h1></div>
