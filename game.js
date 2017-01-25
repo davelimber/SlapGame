@@ -143,6 +143,8 @@ function onHadouken() {
 
 }
 
+// Need to complete function 
+
 function reduceMods(x) {
 var y = 0;
     if (x == 'slapCounter' && p1.slapCounter > 10) {
